@@ -1,7 +1,8 @@
 <template>
   <div class="component-upload-image">
     <el-upload
-      multiple
+      :multiple="multiple"
+      :drag="drag"
       :action="uploadImgUrl"
       list-type="picture-card"
       :on-success="handleUploadSuccess"
@@ -70,6 +71,14 @@ const props = defineProps({
     type: Boolean,
     default: true
   },
+  multiple: {
+    type: Boolean,
+    default: true
+  },
+  drag: {
+    type: Boolean,
+    default: true
+  }
 });
 
 const { proxy } = getCurrentInstance();
@@ -204,5 +213,9 @@ function listToString(list, separator) {
 // .el-upload--picture-card 控制加号部分
 :deep(.hide .el-upload--picture-card) {
     display: none;
+}
+
+:deep(.el-upload--picture-card) {
+  height: auto;
 }
 </style>
